@@ -36,45 +36,59 @@ public class NBody {
     }
 
     public static Planet[] readPlanets(String FileName) {
-        StdDraw.enableDoubleBuffering();
-        Planet[] P;
-        //Ps to save Planets
-        ArrayList<Planet> Ps = new ArrayList<>();
-        ArrayList<String> PPs = new ArrayList<>();
-        //S to save String items
-        HashSet<String> S = new HashSet<>();
+//        Planet[] P;
+//        //Ps to save Planets
+//        ArrayList<Planet> Ps = new ArrayList<>();
+//        ArrayList<String> PPs = new ArrayList<>();
+//        //S to save String items
+//        HashSet<String> S = new HashSet<>();
+//
+//        //catch valid items from file, and then save to S
+//        try {
+//            BufferedReader in = new BufferedReader(new FileReader(FileName));
+//            for (int i = 0; i < 7; i++) {
+//                String s = in.readLine();
+//                if (i > 1) {
+//                    S.add(s);
+//                    PPs.add(s);
+//                }
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        //Split S and construct Planets with these value
+//        for (String s : PPs) {
+//            String[] items = s.split("  *");
+//            Planet p = new Planet(
+//                    Double.parseDouble(items[1]),
+//                    Double.parseDouble(items[2]),
+//                    Double.parseDouble(items[3]),
+//                    Double.parseDouble(items[4]),
+//                    Double.parseDouble(items[5]),
+//                    items[6]);
+//            Ps.add(p);
+//        }
+//
+//        P = new Planet[]{Ps.get(0), Ps.get(1), Ps.get(2), Ps.get(3), Ps.get(4)};
+//
+//
+//        return P;
 
-        //catch valid items from file, and then save to S
-        try {
-            BufferedReader in = new BufferedReader(new FileReader(FileName));
-            for (int i = 0; i < 7; i++) {
-                String s = in.readLine();
-                if (i > 1) {
-                    S.add(s);
-                    PPs.add(s);
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        In in = new In(FileName);
+        int num = in.readInt();
+        Planet[] Ps = new Planet[num];
+        in.readDouble();
+        for (int i = 0; i < num; i++) {
+            double xxp = in.readDouble();
+            double yyp = in.readDouble();
+            double xxv = in.readDouble();
+            double yyv = in.readDouble();
+            double m = in.readDouble();
+            String img = in.readString();
+            Ps[i]=new Planet(xxp,yyp,xxv,yyv,m,img);
         }
-        //Split S and construct Planets with these value
-        for (String s : PPs) {
-            String[] items = s.split("  *");
-            Planet p = new Planet(
-                    Double.parseDouble(items[1]),
-                    Double.parseDouble(items[2]),
-                    Double.parseDouble(items[3]),
-                    Double.parseDouble(items[4]),
-                    Double.parseDouble(items[5]),
-                    items[6]);
-            Ps.add(p);
-        }
-
-        P = new Planet[]{Ps.get(0), Ps.get(1), Ps.get(2), Ps.get(3), Ps.get(4)};
-
-
-        return P;
+        return Ps;
     }
 
 
