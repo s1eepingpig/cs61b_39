@@ -185,7 +185,7 @@ public class NBody {
             }
             //Updating the Force to each planet.
             for (int i = 0; i < planets.length; i++) {
-                planets[i].update(time,xForces[i],yForces[i]);
+                planets[i].update(dt,xForces[i],yForces[i]);
             }
             StdDraw.clear();
             StdDraw.picture(0, 0, imageToDraw);
