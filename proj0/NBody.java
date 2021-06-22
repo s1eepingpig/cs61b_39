@@ -40,6 +40,7 @@ public class NBody {
         Planet[] P;
         //Ps to save Planets
         ArrayList<Planet> Ps = new ArrayList<>();
+        ArrayList<String> PPs = new ArrayList<>();
         //S to save String items
         HashSet<String> S = new HashSet<>();
 
@@ -50,6 +51,7 @@ public class NBody {
                 String s = in.readLine();
                 if (i > 1) {
                     S.add(s);
+                    PPs.add(s);
                 }
             }
 
@@ -57,7 +59,7 @@ public class NBody {
             e.printStackTrace();
         }
         //Split S and construct Planets with these value
-        for (String s : S) {
+        for (String s : PPs) {
             String[] items = s.split("  *");
             Planet p = new Planet(
                     Double.parseDouble(items[1]),

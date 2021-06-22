@@ -1,4 +1,4 @@
-class Planet {
+public class Planet {
     public double xxPos;
     public double yyPos;
     public double xxVel;
@@ -24,7 +24,7 @@ class Planet {
         this.imgFileName = p.imgFileName;
     }
 
-    double calcDistance(Planet p) {
+    private double calcDistance(Planet p) {
         double x = Math.abs(p.xxPos - xxPos);
         double y = Math.abs(p.yyPos - yyPos);
         if (x == 0.0) {
@@ -122,8 +122,6 @@ class Planet {
     //Drawing the planet on the screen
     public void draw() {
         StdDraw.picture(this.xxPos, this.yyPos, "/images/" + this.imgFileName);
-
     }
-
 
 }
