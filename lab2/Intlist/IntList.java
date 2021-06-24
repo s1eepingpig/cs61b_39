@@ -89,6 +89,9 @@ public class IntList {
         if (B == null) {
             return A;
         }
+        if (A == null) {
+            return B;
+        }
         IntList res = A;
         while (res.rest != null) {
             res = res.rest;
