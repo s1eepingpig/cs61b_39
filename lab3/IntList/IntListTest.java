@@ -74,15 +74,15 @@ public class IntListTest {
         //normally reverse case
         IntList A = IntList.of(1,2,3);
         IntList exp = IntList.of(3,2,1);
-        assertEquals(exp,A.reverse());
+        assertEquals(exp,IntList.reverse(A));
 
         //The pointer of list has been changed.
         IntList B = IntList.of(1,2,3);
-        assertNotEquals(B,B.reverse());
+        assertNotEquals(B,B.reverse(B));
 
         //Null input check
         IntList C = new IntList();
-        assertEquals(new IntList(),C.reverse());
+        assertEquals(null,C.reverse(null));
 
     }
 

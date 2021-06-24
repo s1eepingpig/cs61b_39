@@ -241,19 +241,19 @@ public class IntList {
         return out.toString();
     }
 
-    public IntList reverse() {
+    public static IntList reverse(IntList A) {
         //Null case
-        if (this == null) {
+        if (A == null) {
             return null;
         }
         //Only one element case
-        if (rest == null) {
-            return this;
+        if (A.rest == null) {
+            return A;
         }
 
         //reverse List
-        IntList cur = this;
-        IntList work = this.rest;
+        IntList cur = A;
+        IntList work = A.rest;
         cur.rest = null;
         while (work != null) {
             IntList tmp = work;
