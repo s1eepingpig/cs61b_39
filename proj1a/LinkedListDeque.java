@@ -5,7 +5,7 @@ public class LinkedListDeque<T> {
     //inner linkedList class (circle linked)
     public static class LinkedList<T> {
         private Node senti;
-        public int size;
+        private int size;
 
 
         public class Node {
@@ -32,7 +32,7 @@ public class LinkedListDeque<T> {
             Node node = new Node(first0, this.senti, this.senti);
             this.senti.next = node;
             this.senti.prev = node;
-            this.size = 1;
+            size = 1;
 
         }
 
@@ -41,7 +41,7 @@ public class LinkedListDeque<T> {
             this.senti = new Node();
             this.senti.next = senti;
             this.senti.prev = senti;
-            this.size = 0;
+            size = 0;
         }
 
         public T getFirst() {
@@ -53,18 +53,18 @@ public class LinkedListDeque<T> {
 
 
         public void addFirst(T e) {
-            if (size==0) {
+            if (size == 0) {
                 Node node = new Node(e, this.senti, this.senti);
                 this.senti.next = node;
                 this.senti.prev = node;
-                size++;
+                size+=1;
                 return;
             }
 
             Node node = new Node(e, senti.next, senti);
-            senti.next.prev=node;
-            senti.next=node;
-            size++;
+            senti.next.prev = node;
+            senti.next = node;
+            size+=1;
         }
 
         public T getLast() {
@@ -78,22 +78,26 @@ public class LinkedListDeque<T> {
             if (size == 0) {
                 senti.next = new Node(e, senti, senti);
                 senti.prev = senti.next;
-                size+=1;
+                size += 1;
+                return;
             }
             Node prev = senti.prev;
             Node node = new Node(e, senti, prev);
             senti.prev.next = node;
             senti.prev = node;
-            size+=1;
+            size += 1;
         }
 
         public void removeFirst() {
             if (senti.next == null) {
+                size=0;
                 return;
             }
             senti.next = senti.next.next;
             senti.next.next.prev = senti;
-            size -= 1;
+            if (size > 0) {
+                size -= 1;
+            }
         }
 
         public void removeLast() {
@@ -106,7 +110,7 @@ public class LinkedListDeque<T> {
             if (size > 1) {
                 senti.prev.prev.next = senti;
                 senti.prev = senti.prev.prev;
-                size--;
+                size-=1;
             }
         }
 
