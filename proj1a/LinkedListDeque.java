@@ -57,14 +57,14 @@ public class LinkedListDeque<T> {
                 Node node = new Node(e, this.senti, this.senti);
                 this.senti.next = node;
                 this.senti.prev = node;
-                size+=1;
+                size += 1;
                 return;
             }
 
             Node node = new Node(e, senti.next, senti);
             senti.next.prev = node;
             senti.next = node;
-            size+=1;
+            size += 1;
         }
 
         public T getLast() {
@@ -89,28 +89,32 @@ public class LinkedListDeque<T> {
         }
 
         public void removeFirst() {
-            if (senti.next == null) {
-                size=0;
+            if (senti.next == senti) {
+                size = 0;
                 return;
             }
-            senti.next = senti.next.next;
             senti.next.next.prev = senti;
+            senti.next = senti.next.next;
             if (size > 0) {
                 size -= 1;
             }
         }
 
         public void removeLast() {
-            if (size == 0) return;
+            if (size == 0) {
+                return;
+            }
             if (size == 1) {
                 senti.next = senti;
                 senti.prev = senti;
                 size = 0;
+                return;
             }
             if (size > 1) {
                 senti.prev.prev.next = senti;
                 senti.prev = senti.prev.prev;
-                size-=1;
+                size -= 1;
+                return;
             }
         }
 
