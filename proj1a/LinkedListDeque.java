@@ -37,7 +37,7 @@ public class LinkedListDeque<T> {
         }
 
         //None args init
-        public LinkedList() {
+        LinkedList() {
             this.senti = new Node();
             this.senti.next = senti;
             this.senti.prev = senti;
@@ -140,7 +140,7 @@ public class LinkedListDeque<T> {
 
     //define a deque from here
 //    --------------------------------------------------
-    LinkedList<T> dequeue = new LinkedList<>();
+    private LinkedList<T> dequeue = new LinkedList<>();
 
     //Adds an item of type T to the front of the deque.
     public void addFirst(T item) {

@@ -29,12 +29,12 @@ public class ArrayDeque<T> {
                 aList = a;
                 aList[last] = e;
                 last += 1;
-                size+=1;
+                size += 1;
                 return;
             }
             aList[last] = e;
             last += 1;
-            size+=1;
+            size += 1;
             return;
 
 
@@ -105,7 +105,7 @@ public class ArrayDeque<T> {
 
     //define a deque from here
 //    --------------------------------------------------
-    Array<T> aList = new Array<T>();
+    private Array<T> aList = new Array<T>();
 
     //Adds an item of type T to the front of the deque.
     public void addFirst(T item) {
