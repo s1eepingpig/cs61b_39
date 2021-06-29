@@ -164,12 +164,12 @@ public class ArrayDeque<T> {
     }
 
     //get But uses recursion
-    public T getRecursive(int index) {
-        if (index == 0) {
-            return aList.getFirst();
-        }
-        return getRecursive(index - 1);
-    }
+//    public T getRecursive(int index) {
+//        if (index == 0) {
+//            return aList.getFirst();
+//        }
+//        return getRecursive(index - 1);
+//    }
 
     // Constructor
     public ArrayDeque() {
