@@ -3,30 +3,30 @@
 public class LinkedListDeque<T> {
 
     //inner linkedList class (circle linked)
-    public static class LinkedList<T> {
+    private class LinkedList<T> {
         private Node senti;
         private int size;
 
 
-        public class Node {
+        private class Node {
             private Node next;
             private T value;
             private Node prev;
 
-            public Node(T value, Node next, Node prev) {
+            private Node(T value, Node next, Node prev) {
                 this.next = next;
                 this.value = value;
                 this.prev = prev;
             }
 
-            public Node() {
+            private Node() {
 
             }
 
         }
 
         //init list include args
-        public LinkedList(T first0) {
+        private LinkedList(T first0) {
             this.senti.next = this.senti;
             this.senti.prev = this.senti;
             Node node = new Node(first0, this.senti, this.senti);
@@ -111,8 +111,8 @@ public class LinkedListDeque<T> {
                 return;
             }
             if (size > 1) {
-                senti.prev.prev.next = senti;
-                senti.prev = senti.prev.prev;
+                senti.prev.prev.next = senti.next;
+                senti.next.prev = senti.prev.prev;
                 size -= 1;
                 return;
             }
