@@ -1,145 +1,113 @@
 
-
 public class LinkedListDeque<T> {
 
     //inner linkedList class (circle linked)
     private class LinkedList<T> {
         private Node senti;
         private int size;
-        public T value;
 
-
-
-        private class Node {
-            private Node next;
-            private T value;
-            private Node prev;
-
-
-
-            private Node(T value, Node next, Node prev) {
-                this.next = next;
-                this.value = value;
-                this.prev = prev;
-            }
-
-            private Node() {
-
-            }
-
-        }
-
-        //init list include args
-        private LinkedList(T first0) {
-            this.senti.next = this.senti;
-            this.senti.prev = this.senti;
-            Node node = new Node(first0, this.senti, this.senti);
-            this.senti.next = node;
-            this.senti.prev = node;
-            size = 1;
-
-        }
-
-        //None args init
-        LinkedList() {
-
-            this.senti = new Node();
-            this.senti.next = senti;
-            this.senti.prev = senti;
-            this.senti.value = value;
-            size = 0;
-        }
-
-        public T getFirst() {
-            if (this.senti.next != this.senti) {
-                return senti.next.value;
-            }
-            return senti.value;
-        }
-
-
-        public void addFirst(T e) {
+        public void addFirst(T item) {
+            Node first = new Node();
+            first.data = item;
             if (size == 0) {
-                Node node = new Node(e, this.senti, this.senti);
-                this.senti.next = node;
-                this.senti.prev = node;
-                size += 1;
+                first.prev = senti;
+                first.next = senti;
+                senti.next = first;
+                senti.prev = first;
+                size = 1;
                 return;
             }
-
-            Node node = new Node(e, senti.next, senti);
-            senti.next.prev = node;
-            senti.next = node;
+            first.prev = senti;
+            first.next = senti.next;
+            senti.next.prev = first;
+            senti.next = first;
             size += 1;
+            return;
         }
 
-        public T getLast() {
-            if (senti.next == senti) {
-                return null;
-            }
-            return this.senti.prev.value;
-        }
-
-        public void addLast(T e) {
+        public void addLast(T item) {
+            Node last = new Node();
+            last.data = item;
             if (size == 0) {
-                senti.next = new Node(e, senti, senti);
-                senti.prev = senti.next;
-                size += 1;
+                last.next = senti;
+                senti.next = last;
+                senti.prev = last;
+                last.prev = senti;
+                size = 1;
                 return;
             }
-            Node prev = senti.prev;
-            Node node = new Node(e, senti, prev);
-            senti.prev.next = node;
-            senti.prev = node;
+            last.next = senti;
+            last.prev = senti.prev;
+            senti.prev.next = last;
+            senti.prev = last;
             size += 1;
+            return;
         }
 
         public void removeFirst() {
-            if (senti.next == senti) {
-                size = 0;
-                return ;
+            if (size == 0) {
+                return;
             }
+//            if (size==1){
+//
+//            }
             senti.next.next.prev = senti;
             senti.next = senti.next.next;
-            if (size > 0) {
-                size -= 1;
+            size -= 1;
+        }
+
+        public T getFirst() {
+            if (size == 0) {
+                return null;
             }
+            return senti.next.data;
         }
 
         public void removeLast() {
             if (size == 0) {
                 return;
             }
-            if (size == 1) {
-                senti.next = senti;
-                senti.prev = senti;
-                size = 0;
-                return;
-            }
-            if (size > 1) {
-                senti.prev.prev.next = senti.next;
-                senti.next.prev = senti.prev.prev;
-                senti.prev = senti.prev.prev;
-                size -= 1;
-                return;
-            }
+            senti.prev.prev.next = senti;
+            senti.prev = senti.prev.prev;
+            size -= 1;
         }
 
-        public int size() {
-            return size;
-        }
-
-        public T get(int index) {
-            if (index > size) {
+        public T getLast() {
+            if (size == 0) {
                 return null;
             }
-            int t = 0;
-            Node node = senti.next;
-            while (t < index) {
-                node = node.next;
-                t++;
+            return senti.prev.data;
+        }
+
+        public T getIndex(int index) {
+            if (index > size - 1) {
+                return null;
             }
-            return node.value;
+            int tmp = 0;
+            Node first = senti.next;
+            while (tmp < index) {
+                first = first.next;
+                tmp++;
+            }
+            return first.data;
+        }
+
+
+        private class Node {
+            private Node prev;
+            private Node next;
+            private T data;
+
+            private Node() {
+
+            }
+        }
+
+        LinkedList() {
+            this.senti = new Node();
+            senti.next = senti;
+            senti.prev = senti;
+            size = 0;
         }
 
 
@@ -157,6 +125,7 @@ public class LinkedListDeque<T> {
     //Adds an item of type T to the back of the deque.
     public void addLast(T item) {
         dequeue.addLast(item);
+
     }
 
     //    Returns true if deque is empty, false otherwise.
@@ -169,22 +138,25 @@ public class LinkedListDeque<T> {
 
     //Returns the number of items in the deque.
     public int size() {
-        return dequeue.size();
+        return dequeue.size;
     }
 
 
     //  Prints the items in the deque from first to last, separated by a space.
     public void printDeque() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < dequeue.size; i++) {
-            sb.append(dequeue.get(i));
-            sb.append(" ");
+        for (int i = 0; i < size(); i++) {
+            T item = dequeue.getIndex(i);
+            sb.append(item);
+            if (i != size() - 1) {
+                sb.append(" ");
+            }
         }
         System.out.println(sb);
     }
 
     //  Removes and returns the item at the front of the deque.
-//  If no such item exists, returns null.
+    //  If no such item exists, returns null.
     public T removeFirst() {
         dequeue.removeFirst();
         return dequeue.getFirst();
@@ -195,22 +167,19 @@ public class LinkedListDeque<T> {
     public T removeLast() {
         dequeue.removeLast();
         return dequeue.getLast();
-
     }
 
     //  Gets the item at the given index, where 0 is the front, 1 is the next item, and so forth.
 //  If no such item exists, returns null.
 //  Must not alter the deque!
     public T get(int index) {
-        return dequeue.get(index);
+        return dequeue.getIndex(index);
     }
 
     //get But uses recursion
     public T getRecursive(int index) {
-        if (index == 0) {
-            return dequeue.getFirst();
-        }
-        return getRecursive(index - 1);
+        T index1 = dequeue.getIndex(index);
+        return index1;
     }
 
     // Constructor
