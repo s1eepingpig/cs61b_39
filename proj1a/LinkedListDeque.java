@@ -158,8 +158,9 @@ public class LinkedListDeque<T> {
     //  Removes and returns the item at the front of the deque.
     //  If no such item exists, returns null.
     public T removeFirst() {
+        T first = dequeue.getFirst();
         dequeue.removeFirst();
-        return dequeue.getFirst();
+        return first;
     }
 
     // Removes and returns the item at the back of the deque.
