@@ -78,7 +78,7 @@ public class ArrayDeque<T> {
         }
     }
 
-    Array<T> aLists = new Array<>();
+    private Array<T> aLists = new Array<>();
 
     public void addFirst(T item) {
         aLists.addFirst(item);
