@@ -180,9 +180,19 @@ public class LinkedListDeque<T> {
 
     //get But uses recursion
     public T getRecursive(int index) {
-        T index1 = dequeue.getIndex(index);
-        return index1;
+        if (index > size() - 1) {
+            return null;
+        }
+        return getR(dequeue.senti.next, index);
     }
+
+    private T getR(LinkedList.Node next, int index) {
+        if (index == 0) {
+            return (T) next.data;
+        }
+        return getR((LinkedList.Node) next.next, index - 1);
+    }
+
 
     // Constructor
     public LinkedListDeque() {

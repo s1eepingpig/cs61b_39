@@ -4,8 +4,8 @@ public class ArrayDeque<T> {
 
     private class Array<T> {
         int factor = 8;
-        int first = 4;
-        int last = 5;
+        int first = 0;
+        int last = 1;
         int size;
         T[] aList;
 
@@ -18,43 +18,72 @@ public class ArrayDeque<T> {
             return size;
         }
 
+        //用来映射索引和数组位置
+        public T map(int idx) {
+            if (idx > size) {
+                return null;
+            }
+            int k;
+            if (first + 1 + idx == aList.length) {
+                k = 0;
+            } else {
+                k = (first + 1 + idx) % aList.length;
+            }
+
+            return aList[k];
+        }
+
         public void addFirst(T item) {
-            if (first == 0) {
+            if (size < aList.length) {
                 aList[first] = item;
+                if (first == 0) {
+                    first = aList.length - 1;
+                } else {
+                    first = (first - 1 % aList.length);
+                }
                 size += 1;
-                factor = factor * 2;
-                T[] a = (T[]) new Object[factor];
-                System.arraycopy(aList, 0, a, (factor / 2) + 0, factor / 2);
-                first = (factor / 2) - 1;
-                last = last + (factor / 2);
                 return;
             }
-            aList[first] = item;
-            first -= 1;
-            size += 1;
+            if (size == aList.length) {
+                this.factor = factor * 2;
+                T[] a = (T[]) new Object[factor];
+                for (int i = 0; i <= size; i++) {
+
+                    a[i] = aList[Math.abs((first - i) % aList.length)];
+                }
+                aList = a;
+                first = a.length;
+                last = size;
+                aList[first] = item;
+                first = Math.abs((first - 1) % aList.length);
+                size += 1;
+                return;
+            }
         }
 
         public void addLast(T item) {
-            if (last == aList.length) {
+            if (size < aList.length) {
                 aList[last] = item;
                 size += 1;
-                factor = factor * 2;
-                T[] a = (T[]) new Object[factor];
-                for (int i = 0; i < aList.length; i++) {
-                    a[i] = aList[i];
-                }
-                last = (factor / 2) + 1;
-                first = last - size;
-                return;
+                last = (last + 1) % aList.length;
             }
+            factor = factor * 2;
+            T[] a = (T[]) new Object[factor];
+            for (int i = 0; i <= size; i++) {
+                a[i] = aList[Math.abs((first - i) % aList.length)];
+            }
+            aList = a;
+            first = aList.length;
+            last = size;
             aList[last] = item;
-            last += 1;
             size += 1;
+            last += 1;
         }
 
         public T get(int i) {
             if (size > 0) {
-                return aList[first + i];
+                T map = (T) aLists.map(i);
+                return map;
             }
             return null;
         }
@@ -106,7 +135,7 @@ public class ArrayDeque<T> {
     //  Prints the items in the deque from first to last, separated by a space.
     public void printDeque() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < aLists.size; i++) {
+        for (int i = 0; i < this.aLists.size - 1; i++) {
             sb.append(aLists.get(i));
             if (i != aLists.size - 1) {
                 sb.append(" ");
