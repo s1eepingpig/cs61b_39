@@ -52,7 +52,7 @@ public class ArrayDeque<T> {
                     a[i] = aList[Math.abs((first - i) % aList.length)];
                 }
                 aList = a;
-                first = a.length;
+                first = a.length - 1;
                 last = size;
                 aList[first] = item;
                 first = Math.abs((first - 1) % aList.length);
@@ -66,6 +66,7 @@ public class ArrayDeque<T> {
                 aList[last] = item;
                 size += 1;
                 last = (last + 1) % aList.length;
+                return;
             }
             factor = factor * 2;
             T[] a = (T[]) new Object[factor];
