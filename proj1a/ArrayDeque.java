@@ -99,7 +99,7 @@ public class ArrayDeque<T> {
 
         public void removeFirst() {
             if (size > 0) {
-                if (first == aList.length) {
+                if (first == aList.length - 1) {
                     first = 0;
                     return;
                 }
