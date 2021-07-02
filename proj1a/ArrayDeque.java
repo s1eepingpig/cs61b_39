@@ -148,15 +148,17 @@ public class ArrayDeque<T> {
     //  Removes and returns the item at the front of the deque.
 //  If no such item exists, returns null.
     public T removeFirst() {
+        T t = aLists.get(0);
         aLists.removeFirst();
-        return aLists.get(0);
+        return t;
     }
 
     // Removes and returns the item at the back of the deque.
     // If no such item exists, returns null.
     public T removeLast() {
+        T t = aLists.get(size() - 1);
         aLists.removeLast();
-        return aLists.get(size() - 1);
+        return t;
     }
 
     //  Gets the item at the given index, where 0 is the front, 1 is the next item, and so forth.
