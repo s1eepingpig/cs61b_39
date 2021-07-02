@@ -73,15 +73,20 @@ public class ArrayDeque<T> {
             }
             factor = factor * 2;
             T[] a = (T[]) new Object[factor];
-            for (int i = 0; i <= size; i++) {
-                a[i] = aList[Math.abs((first - i) % aList.length)];
+            for (int i = 0; i < size; i++) {
+                if (first + 1 + i == aList.length - 1) {
+                    a[i] = aList[aList.length - 1];
+                } else {
+                    a[i] = aList[(first + 1 + i) % aList.length];
+                }
             }
             aList = a;
-            first = aList.length;
+            first = aList.length - 1;
             last = size;
             aList[last] = item;
             size += 1;
             last += 1;
+            return;
         }
 
         public T get(int i) {
