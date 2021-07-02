@@ -99,6 +99,10 @@ public class ArrayDeque<T> {
 
         public void removeFirst() {
             if (size > 0) {
+                if (first == aList.length) {
+                    first = 0;
+                    return;
+                }
                 first += 1;
                 size -= 1;
             }
@@ -108,7 +112,13 @@ public class ArrayDeque<T> {
         }
 
         public void removeLast() {
+            if (size == 0) {
+                return;
+            }
             if (size > 0) {
+                if (last == 0) {
+                    last = aList.length - 1;
+                }
                 last -= 1;
                 size -= 1;
             }
