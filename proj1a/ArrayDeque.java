@@ -101,6 +101,7 @@ public class ArrayDeque<T> {
             if (size > 0) {
                 if (first == aList.length - 1) {
                     first = 0;
+                    size -= 1;
                     return;
                 }
                 first += 1;
