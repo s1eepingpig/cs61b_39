@@ -47,12 +47,15 @@ public class ArrayDeque<T> {
             if (size == aList.length) {
                 this.factor = factor * 2;
                 T[] a = (T[]) new Object[factor];
-                for (int i = 0; i <= size; i++) {
-
-                    a[i] = aList[Math.abs((first - i) % aList.length)];
+                for (int i = 0; i < size; i++) {
+                    if (first + 1 + i == aList.length - 1) {
+                        a[i] = aList[aList.length - 1];
+                    } else {
+                        a[i] = aList[(first + 1 + i) % aList.length];
+                    }
                 }
                 aList = a;
-                first = a.length - 1;
+                first = aList.length - 1;
                 last = size;
                 aList[first] = item;
                 first = Math.abs((first - 1) % aList.length);
