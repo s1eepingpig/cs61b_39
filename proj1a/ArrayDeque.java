@@ -176,7 +176,7 @@ public class ArrayDeque<T> {
     //  Prints the items in the deque from first to last, separated by a space.
     public void printDeque() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < aLists.size ; i++) {
+        for (int i = 0; i < aLists.size; i++) {
             sb.append(aLists.get(i));
             if (i != aLists.size - 1) {
                 sb.append(" ");
