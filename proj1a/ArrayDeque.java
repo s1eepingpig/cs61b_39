@@ -98,6 +98,9 @@ public class ArrayDeque<T> {
         }
 
         public void removeFirst() {
+            if (size == 0) {
+                return;
+            }
             if (size > 0) {
                 if (first == aList.length - 1) {
                     first = 0;
@@ -106,10 +109,25 @@ public class ArrayDeque<T> {
                 }
                 first += 1;
                 size -= 1;
+                if (size * 4 < aList.length) {
+                    refactor();
+                }
             }
-            if (size == 0) {
-                return;
+        }
+
+        private void refactor() {
+            factor /= 2;
+            T[] a = (T[]) new Object[factor];
+            for (int i = 0; i < size; i++) {
+                if (first + 1 + i == aList.length - 1) {
+                    a[i] = aList[aList.length - 1];
+                } else {
+                    a[i] = aList[(first + 1 + i) % aList.length];
+                }
             }
+            aList = a;
+            first = aList.length - 1;
+            last = size;
         }
 
         public void removeLast() {
@@ -122,7 +140,9 @@ public class ArrayDeque<T> {
                 }
                 last -= 1;
                 size -= 1;
-
+                if (size * 4 < factor) {
+                    refactor();
+                }
             }
             return;
         }
@@ -188,9 +208,8 @@ public class ArrayDeque<T> {
     public T get(int index) {
         return aLists.get(index);
     }
-
     //get But uses recursion
-//    public T getRecursive(int index) {
+    //public T getRecursive(int index) {
 //
 //    }
 }
