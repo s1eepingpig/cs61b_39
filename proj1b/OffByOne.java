@@ -1,17 +1,17 @@
 public class OffByOne implements CharacterComparator {
-    int pos;
+    private int pos;
 
-    OffByOne(int pos) {
+    public OffByOne(int pos) {
         this.pos = pos;
     }
 
-    OffByOne() {
+    public OffByOne() {
 
     }
 
     @Override
     public boolean equalChars(char x, char y) {
-        int k = 2;
+        int k = 1;
         if (pos != 0) {
             k = pos;
         }

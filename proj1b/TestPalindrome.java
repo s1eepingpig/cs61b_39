@@ -7,6 +7,7 @@ public class TestPalindrome {
     // new Palindromes, or the autograder might be upset.
     static Palindrome palindrome = new Palindrome();
     static OffByOne OffByOne = new OffByOne();
+    static OffByN offByN = new OffByN(5);
 
     @Test
     public void testWordToDeque() {
@@ -40,8 +41,9 @@ public class TestPalindrome {
         assertTrue(palindrome.isPalindrome(case6));
 
     }
+
     @Test
-    public void isPalindrome(){
+    public void isPalindrome() {
 
         assertFalse(OffByOne.isPalindrome("abc"));
         assertFalse(OffByOne.isPalindrome("ac"));
@@ -49,6 +51,11 @@ public class TestPalindrome {
         assertTrue(OffByOne.isPalindrome(""));
         assertTrue(OffByOne.isPalindrome("aba"));
         assertTrue(OffByOne.isPalindrome("abba"));
+
+    }
+
+    @Test
+    public void TestOffByN() {
 
     }
 

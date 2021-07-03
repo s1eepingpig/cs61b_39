@@ -1,9 +1,11 @@
 public class OffByN implements CharacterComparator {
 
-    int pos;
-    OffByN(int pos) {
+    private int pos;
+
+    public OffByN(int pos) {
         this.pos = pos;
     }
+
     @Override
     public boolean equalChars(char x, char y) {
         int k = 0;
