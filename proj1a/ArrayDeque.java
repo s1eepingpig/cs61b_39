@@ -118,10 +118,11 @@ public class ArrayDeque<T> {
             }
             if (size > 0) {
                 if (last == 0) {
-                    last = aList.length - 1;
+                    last = aList.length ;
                 }
                 last -= 1;
                 size -= 1;
+
             }
             return;
         }
