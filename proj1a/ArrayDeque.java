@@ -118,7 +118,7 @@ public class ArrayDeque<T> {
             }
             if (size > 0) {
                 if (last == 0) {
-                    last = aList.length ;
+                    last = aList.length;
                 }
                 last -= 1;
                 size -= 1;
