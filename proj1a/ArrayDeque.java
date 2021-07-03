@@ -117,6 +117,9 @@ public class ArrayDeque<T> {
 
         private void refactor() {
             factor /= 2;
+            if (factor < 8) {
+                factor = 8;
+            }
             T[] a = (T[]) new Object[factor];
             for (int i = 0; i < size; i++) {
                 if (first + 1 + i == aList.length - 1) {
