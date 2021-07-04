@@ -6,7 +6,7 @@ public class TestPalindrome {
     // You must use this palindrome, and not instantiate
     // new Palindromes, or the autograder might be upset.
     static Palindrome palindrome = new Palindrome();
-    static OffByOne OffByOne = new OffByOne();
+    static OffByOne OFFBYONE = new OffByOne();
     static OffByN offByN = new OffByN(5);
 
     @Test
@@ -45,17 +45,19 @@ public class TestPalindrome {
     @Test
     public void isPalindrome() {
 
-        assertFalse(OffByOne.isPalindrome("abc"));
-        assertFalse(OffByOne.isPalindrome("ad"));
-
-        assertTrue(OffByOne.isPalindrome(""));
-        assertFalse(OffByOne.isPalindrome("aba"));
-        assertFalse(OffByOne.isPalindrome("abba"));
+        assertFalse(OFFBYONE.isPalindrome("abc"));
+        assertFalse(OFFBYONE.isPalindrome("ad"));
+        assertTrue(OFFBYONE.isPalindrome("()"));
+        assertTrue(OFFBYONE.isPalindrome("123"));
+        assertTrue(OFFBYONE.isPalindrome("a1a"));
+        assertTrue(OFFBYONE.isPalindrome(""));
+        assertFalse(OFFBYONE.isPalindrome("aba"));
+        assertFalse(OFFBYONE.isPalindrome("abba"));
 
     }
 
     @Test
-    public void TestOffByN() {
+    public void testOffByN() {
     }
 
 }
