@@ -1,9 +1,6 @@
 public class OffByOne implements CharacterComparator {
     private int pos;
 
-    public OffByOne(int pos) {
-        this.pos = pos;
-    }
 
     public OffByOne() {
 
@@ -21,20 +18,22 @@ public class OffByOne implements CharacterComparator {
         return false;
     }
 
-    public boolean isPalindrome(String word) {
+    boolean isPalindrome(String word) {
         if (word.length() == 0 || word.length() == 1) {
             return true;
         }
         if (word.length() % 2 != 0) {
             for (int i = 0; i < word.length() / 2; i++) {
-                if (!equalChars(word.charAt(i), word.charAt(word.length() - 1 - i))) {
+                if (!equalChars(word.charAt(i),
+                        word.charAt(word.length() - 1 - i))) {
                     return false;
                 }
             }
             return true;
         } else {
             for (int i = 0; i < word.length() / 2; i++) {
-                if (!equalChars(word.charAt(i), word.charAt(word.length() - 1 - i))) {
+                if (!equalChars(word.charAt(i),
+                        word.charAt(word.length() - 1 - i))) {
                     return false;
                 }
             }
