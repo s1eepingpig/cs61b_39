@@ -18,9 +18,10 @@ public class TestOffByOne {
         assertFalse(offByOne.equalChars('-', '?'));
         assertFalse(offByOne.equalChars('A', 'A'));
         assertFalse(offByOne.equalChars('A', '?'));
+
     }
     // Your tests go here.
-    //Uncomment this class once you've created your CharacterComparator interface and OffByOne class. *
+
 
 
 }
