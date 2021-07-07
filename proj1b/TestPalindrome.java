@@ -54,15 +54,16 @@ public class TestPalindrome {
         assertFalse(OFFBYONE.isPalindrome("aba"));
         assertFalse(OFFBYONE.isPalindrome("abba"));
         assertFalse(OFFBYONE.isPalindrome("AbbA"));
+        assertFalse(OFFBYONE.isPalindrome("Ab()A"));
 
     }
 
     @Test
     public void testOffByN() {
 
-        palindrome.isPalindrome("aba",offByN);
-        palindrome.isPalindrome("abcd",offByN);
-        assertTrue(palindrome.isPalindrome("chinch",offByN));
+        palindrome.isPalindrome("aba", offByN);
+        palindrome.isPalindrome("abcd", offByN);
+        assertTrue(palindrome.isPalindrome("chinch", offByN));
 
     }
 
