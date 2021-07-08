@@ -18,13 +18,12 @@ public class TestOffByOne {
         assertFalse(offByOne.equalChars('a', 'd'));
         assertFalse(offByOne.equalChars('a', 'A'));
         assertFalse(offByOne.equalChars('-', '='));
-        assertFalse(offByOne.equalChars('A', 'A'));
+        assertTrue(offByOne.equalChars('A', 'B'));
         assertFalse(offByOne.equalChars('A', '?'));
 
 
     }
     // Your tests go here.
-
 
 
 }
