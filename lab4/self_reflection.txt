@@ -8,19 +8,19 @@ A:
 
 Q: What's something you felt proud of in your code, if anything?
 
-A:
+A:When I thought out the idea of how to deal with the problem to conquer the task, That feel made me really exciting.
 
 Q: What's something that was particularly inelegant in your code, if anything?
 
-A:
+A:There are actually some inelegant part in my code, such as some special cases my solution is added some if to fix it, Ialso want to slove it by other way but up to now I dont have that ability. 
 
 Q: What did you learn by talking to your partner about writing ArrayDeque?
 
-A:
+A: 
 
 Q: What do you wish you would have known before writing ArrayDeque, if anything?
 
-A:
+A:To know how to biuld a data structure with java it must be helpful in my after work
 
 Q: If you wrote ArrayDeque again, what would you do differently, if anything?
 
@@ -36,7 +36,7 @@ A:
 
 Q: What's something you felt proud of in your code, if anything?
 
-A:
+A:To fix every bug by myself
 
 Q: What's something that was particularly inelegant in your code, if anything?
 
