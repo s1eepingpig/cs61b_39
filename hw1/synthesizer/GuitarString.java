@@ -4,9 +4,11 @@ package synthesizer;
 
 //Make sure this class is public
 public class GuitarString {
-    /** Constants. Do not change. In case you're curious, the keyword final means
+    /**
+     * Constants. Do not change. In case you're curious, the keyword final means
      * the values cannot be changed at runtime. We'll discuss this and other topics
-     * in lecture on Friday. */
+     * in lecture on Friday.
+     */
     private static final int SR = 44100;      // Sampling Rate
     private static final double DECAY = .996; // energy decay factor
 
@@ -19,7 +21,7 @@ public class GuitarString {
         //       cast the result of this division operation into an int. For better
         //       accuracy, use the Math.round() function before casting.
         //       Your buffer should be initially filled with zeros.
-        int v =(int) Math.round(SR / frequency);
+        int v = (int) Math.round(SR / frequency);
 
         buffer = new ArrayRingBuffer<Double>(v);
         for (int i = 0; i < v; i++) {
@@ -38,9 +40,10 @@ public class GuitarString {
         //
         //       Make sure that your random numbers are different from each other.
 
-        double r = Math.random() - 0.5;
+
         for (int i = 0; i < this.buffer.fillCount(); i++) {
             buffer.dequeue();
+            double r = Math.random() - 0.5;
             buffer.enqueue(r);
         }
 
@@ -48,13 +51,18 @@ public class GuitarString {
     }
 
     /* Advance the simulation one time step by performing one iteration of
-     * the Karplus-Strong algorithm. 
+     * the Karplus-Strong algorithm.
      */
     public void tic() {
         // TODO: Dequeue the front sample and enqueue a new sample that is
         //       the average of the two multiplied by the DECAY factor.
         //       Do not call StdAudio.play().
-
+        if (buffer.fillCount() <= 1) {
+            return;
+        }
+        double front = buffer.dequeue();
+        double next = buffer.peek();
+        buffer.enqueue(DECAY * 0.5 * (front + next));
 
 
     }
@@ -62,8 +70,7 @@ public class GuitarString {
     /* Return the double at the front of the buffer. */
     public double sample() {
         // TODO: Return the correct thing.
-        Double peek = buffer.peek();
-        return peek;
+        return buffer.peek();
 
     }
 }
