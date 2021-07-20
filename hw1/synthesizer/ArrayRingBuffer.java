@@ -114,6 +114,16 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
 
     }
 
+    @Override
+    public Iterator<T> iterator() {
+        try {
+            throw new Exception("Ring Buffer Overflow");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     // TODO: When you get to part 5, implement the needed code to support iteration.
 }
