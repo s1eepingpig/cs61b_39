@@ -5,18 +5,13 @@ public abstract class AbstractBoundedQueue<T> implements BoundedQueue<T> {
     protected int capacity;
 
     @Override
-    public abstract int capacity();
+    public int capacity() {
+        return capacity;
+    }
 
     @Override
-    public abstract int fillCount();
-
-    @Override
-    public abstract T peek();
-
-    @Override
-    public abstract T dequeue();
-
-    @Override
-    public abstract void enqueue(T x);
+    public int fillCount() {
+        return fillCount;
+    }
 
 }
