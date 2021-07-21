@@ -2,7 +2,6 @@
 // package <package name>;
 package synthesizer;
 
-import java.util.Arrays;
 import java.util.Iterator;
 
 //Make sure to make this class and all of its methods public
@@ -106,7 +105,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
      * Return oldest item, but don't remove it.
      */
     public T peek() {
-        //  Return the first item. None of your instance variables should change.if (fillCount > 0) {
+        //  Return the first item. None of your instance variables should change.
         if (fillCount > 0) {
             return rb[first];
         }
@@ -117,14 +116,14 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new newIterator();
+        return new NewIterator();
     }
 
     //  When you get to part 5, implement the needed code to support iteration.
-    private class newIterator implements Iterator {
+    private class NewIterator implements Iterator {
         int p;
 
-        public newIterator() {
+        public NewIterator() {
             p = 0;
         }
 
