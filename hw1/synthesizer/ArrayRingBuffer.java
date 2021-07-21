@@ -93,13 +93,13 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
         return false;
     }
 
-    @Override
-    public boolean isFull() {
-        if (fillCount == capacity) {
-            return true;
-        }
-        return false;
-    }
+//    @Override
+//    public boolean isFull() {
+//        if (fillCount == capacity) {
+//            return true;
+//        }
+//        return false;
+//    }
 
     /**
      * Return oldest item, but don't remove it.
