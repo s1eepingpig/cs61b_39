@@ -13,6 +13,9 @@ public interface BoundedQueue<T> extends Iterable<T> {
 
     T peek();           // return (but do not delete) item from the front
 
+    @Override
+    Iterator<T> iterator();
+
     default boolean isEmpty() {
 
         if (fillCount() == 0) {
