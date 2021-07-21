@@ -85,13 +85,6 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
         return this.fillCount;
     }
 
-    @Override
-    public boolean isEmpty() {
-        if (this.fillCount == 0) {
-            return true;
-        }
-        return false;
-    }
 
 //    @Override
 //    public boolean isFull() {
