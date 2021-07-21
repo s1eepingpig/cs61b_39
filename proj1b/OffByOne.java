@@ -8,16 +8,12 @@ public class OffByOne implements CharacterComparator {
 
     @Override
     public boolean equalChars(char x, char y) {
-        int k = 1;
-        if (pos != 0) {
-            k = pos;
-        }
-        if (k - 1 < Math.abs(x - y) && Math.abs(x - y) <= k) {
+
+        if (x - y == 1 || y - x == 1) {
             return true;
         }
         return false;
     }
-
 
 
     private boolean isPalindrome(String word) {
