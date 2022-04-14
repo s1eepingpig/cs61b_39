@@ -40,25 +40,25 @@ public class TestArrayDequeGold {
                     Integer n = SOL.removeFirst();
                     Integer m = SAD.removeFirst();
                     size--;
-                    Assert.assertEquals(err.append("removeFirst("+n+")\n").toString(), m, n);
+                    Assert.assertEquals(err.append("removeFirst()\n").toString(), m, n);
                 }
             } else if (rand == 3) {
                 if (size > 0) {
                     Integer n = SOL.removeLast();
                     Integer m = SAD.removeLast();
                     size--;
-                    Assert.assertEquals(err.append("removeLast()\n").toString()+"Ohhh no, random number "+ m +" not equal to "+n, n, m);
+                    Assert.assertEquals(err.append("removeLast()\n").toString(), n, m);
 
 
                 }
             } else if (rand == 4) {
-                Assert.assertEquals(err.append("isEmpty()\n").toString()+"It seems need to be empty but it not.", SAD.isEmpty(), SOL.isEmpty());
+                Assert.assertEquals(err.append("isEmpty()\n").toString(), SAD.isEmpty(), SOL.isEmpty());
             } else if (rand == 5) {
                 Assert.assertEquals(err.append("size()\n").toString(), SAD.size(), SOL.size());
             }
             if(size > 0){
                 Integer idx = StdRandom.uniform(size);
-                Assert.assertEquals(err.append("get()\n").toString()+"The number should be "+SOL.get(idx)+" but actually "+SAD.get(idx), SOL.get(idx), SAD.get(idx));
+                Assert.assertEquals(err.append("get("+SOL.get(idx)+")\n").toString(), SOL.get(idx), SAD.get(idx));
             }
 
         }
