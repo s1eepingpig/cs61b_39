@@ -56,10 +56,7 @@ public class TestArrayDequeGold {
             } else if (rand == 5) {
                 Assert.assertEquals(err.append("size()\n").toString(), SAD.size(), SOL.size());
             }
-            if(size > 0){
-                Integer idx = StdRandom.uniform(size);
-                Assert.assertEquals(err.append("get("+SOL.get(idx)+")\n").toString(), SOL.get(idx), SAD.get(idx));
-            }
+
 
         }
 
