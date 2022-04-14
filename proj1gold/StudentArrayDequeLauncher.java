@@ -1,6 +1,9 @@
-/** If you project is set up properly, this file should execute. 
+import edu.princeton.cs.introcs.StdRandom;
+
+/** If you project is set up properly, this file should execute.
 * One thing you might consider is to try printing out the sequence of
 * operations */
+
 public class StudentArrayDequeLauncher {
     public static void main(String[] args) {
         StudentArrayDeque<Integer> sad1 = new StudentArrayDeque<>();
@@ -17,4 +20,4 @@ public class StudentArrayDequeLauncher {
 
         sad1.printDeque();
     }
-} 
+}
